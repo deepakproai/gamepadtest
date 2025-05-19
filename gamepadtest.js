@@ -17,18 +17,16 @@ function connecthandler(e) {
   addgamepad(e.gamepad);
 }
 function objectAsString(obj) {
-  return Object.keys(obj)
-    .filter(property => typeof obj[property] !== 'function')
-    .map(property => {
+  return Object.keys(obj).filter(property => typeof obj[property] !== 'function').map(property => {
       const value = obj[property];
       if (typeof value === 'object' && !Array.isArray(value) && value !== null) {
         return `${property}: {${objectAsString(value)}}`;
       } else {
         return `${property}: ${value}`;
       }
-    })
-    .join('; ');
+    }).join('; ');
 }
+
 function addgamepad(gamepad) {
   controllers[gamepad.index] = gamepad; var d = document.createElement("div");
   d.setAttribute("id", "controller" + gamepad.index);

@@ -111,11 +111,11 @@ function updateStatus() {
 
     var axes = d.getElementsByClassName("axis");
     var textarea = document.getElementById("textarea1");
-    textarea.value += "\n ----------------------" 
+    textarea.value = "----------------------" 
     textarea.value += "\n length:" + controller.axes.length
     for (var i=0; i<controller.axes.length; i++) {
       var a = axes[i];
-      textarea.value += "\n Value:" + controller.axes[i]
+      textarea.value += "\n Axis:" + i + " Value:"  + controller.axes[i]
       a.innerHTML = i + ": " + controller.axes[i].toFixed(4);
       a.setAttribute("value", controller.axes[i]);
     }

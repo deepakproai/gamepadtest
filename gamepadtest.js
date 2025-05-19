@@ -64,7 +64,7 @@ function addgamepad(gamepad) {
   textarea.setAttribute("id", "textarea1"+ gamepad.index);
   textarea.className = "textarea"
   // Set rows to 10 to show 10 lines by default
-  textarea.rows = 10;
+  textarea.rows = 20;
 
   // Optional: Limit maximum number of characters or set cols (width)
   textarea.cols = 50;

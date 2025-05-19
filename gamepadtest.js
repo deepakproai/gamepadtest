@@ -48,6 +48,7 @@ function addgamepad(gamepad) {
 
   var t = document.createElement("div");
   const textarea = document.createElement("textarea");
+  textarea.setAttribute("id", "textarea1");
   textarea.className = "textarea"
   // Set rows to 10 to show 10 lines by default
   textarea.rows = 10;
@@ -109,7 +110,7 @@ function updateStatus() {
     }
 
     var axes = d.getElementsByClassName("axis");
-    var textarea = d.getElementsByClassName("textarea");
+    var textarea = document.getElementById("textarea1");
     textarea.value += "\n ----------------------" 
     textarea.value += "\n length:" + controller.axes.length
     for (var i=0; i<controller.axes.length; i++) {

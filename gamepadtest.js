@@ -60,7 +60,7 @@ function addgamepad(gamepad) {
 
   // Optional: Set a max height to prevent growing beyond 10 lines
   textarea.style.maxHeight = "200px"; // roughly 10 lines depending on font
-
+  textarea.value ="Start"
   // Append to container
   t.appendChild(textarea);
   d.appendChild(t);

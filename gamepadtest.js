@@ -16,6 +16,19 @@ var rAF = window.mozRequestAnimationFrame ||
 function connecthandler(e) {
   addgamepad(e.gamepad);
 }
+function objectAsString(obj) {
+  return Object.keys(obj)
+    .filter(property => typeof obj[property] !== 'function')
+    .map(property => {
+      const value = obj[property];
+      if (typeof value === 'object' && !Array.isArray(value) && value !== null) {
+        return `${property}: {${objectAsString(value)}}`;
+      } else {
+        return `${property}: ${value}`;
+      }
+    })
+    .join('; ');
+}
 function addgamepad(gamepad) {
   controllers[gamepad.index] = gamepad; var d = document.createElement("div");
   d.setAttribute("id", "controller" + gamepad.index);
@@ -48,7 +61,7 @@ function addgamepad(gamepad) {
 
   var t = document.createElement("div");
   const textarea = document.createElement("textarea");
-  textarea.setAttribute("id", "textarea1");
+  textarea.setAttribute("id", "textarea1"+ gamepad.index);
   textarea.className = "textarea"
   // Set rows to 10 to show 10 lines by default
   textarea.rows = 10;
@@ -110,7 +123,7 @@ function updateStatus() {
     }
 
     var axes = d.getElementsByClassName("axis");
-    var textarea = document.getElementById("textarea1");
+    var textarea = document.getElementById("textarea1"+j);
     textarea.value = "--1--------------------" 
     textarea.value += "\n length:" + controller.axes.length
     for (var i=0; i<controller.axes.length; i++) {
@@ -119,6 +132,7 @@ function updateStatus() {
       a.innerHTML = i + ": " + controller.axes[i].toFixed(4);
       a.setAttribute("value", controller.axes[i]);
     }
+    textarea.value += objectAsString(controller)
     
     
   }

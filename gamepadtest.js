@@ -45,6 +45,25 @@ function addgamepad(gamepad) {
     a.appendChild(e);
   }
   d.appendChild(a);
+
+  var t = document.createElement("div");
+  const textarea = document.createElement("textarea");
+  textarea.className = "textarea"
+  // Set rows to 10 to show 10 lines by default
+  textarea.rows = 10;
+
+  // Optional: Limit maximum number of characters or set cols (width)
+  textarea.cols = 50;
+
+  // Enable vertical scrollbar if content exceeds 10 lines
+  textarea.style.overflowY = "auto";
+
+  // Optional: Set a max height to prevent growing beyond 10 lines
+  textarea.style.maxHeight = "200px"; // roughly 10 lines depending on font
+
+  // Append to container
+  t.appendChild(textarea);
+  d.appendChild(t);
   document.getElementById("start").style.display = "none";
   document.body.appendChild(d);
   rAF(updateStatus);
@@ -90,11 +109,17 @@ function updateStatus() {
     }
 
     var axes = d.getElementsByClassName("axis");
+    var textarea = d.getElementsByClassName("textarea");
+    textarea.value += "\n ----------------------" 
+    textarea.value += "\n length:" + controller.axes.length
     for (var i=0; i<controller.axes.length; i++) {
       var a = axes[i];
+      textarea.value += "\n Value:" + controller.axes[i]
       a.innerHTML = i + ": " + controller.axes[i].toFixed(4);
       a.setAttribute("value", controller.axes[i]);
     }
+    
+    
   }
   rAF(updateStatus);
 }

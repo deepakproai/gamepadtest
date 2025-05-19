@@ -130,9 +130,9 @@ function updateStatus() {
       a.innerHTML = i + ": " + controller.axes[i].toFixed(4);
       a.setAttribute("value", controller.axes[i]);
     }
-    textarea.value += "--2--------------------" 
-    textarea.value += "\n Controller: " + objectAsString(controller)
-    textarea.value += "--3--------------------" 
+    textarea.value += "\n--2--------------------" 
+    textarea.value += "\n Controller: " + controller
+    textarea.value += "\n--3--------------------" 
     
   }
   rAF(updateStatus);

@@ -111,7 +111,7 @@ function updateStatus() {
 
     var axes = d.getElementsByClassName("axis");
     var textarea = document.getElementById("textarea1");
-    textarea.value = "----------------------" 
+    textarea.value = "--1--------------------" 
     textarea.value += "\n length:" + controller.axes.length
     for (var i=0; i<controller.axes.length; i++) {
       var a = axes[i];
@@ -141,5 +141,5 @@ if (haveEvents) {
   window.addEventListener("webkitgamepadconnected", connecthandler);
   window.addEventListener("webkitgamepaddisconnected", disconnecthandler);
 } else {
-  setInterval(scangamepads, 500);
+  setInterval(scangamepads, 300000);
 }
